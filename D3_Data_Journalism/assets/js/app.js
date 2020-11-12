@@ -1,6 +1,6 @@
 // @TODO: YOUR CODE HERE!
 function xScale(stateData, chosenXAxis) {
-  
+  //initializing scale
     const xLinearScale = d3.scaleLinear()
         .domain([d3.min(stateData, d => d[chosenXAxis]) - 1,
           d3.max(stateData, d => d[chosenXAxis] + 1)
@@ -8,7 +8,7 @@ function xScale(stateData, chosenXAxis) {
       .range([0, width]);
   
     return xLinearScale;
-  
+  //
     function renderAxes(newXScale, xAxis) {
   
       const bottomAxis = d3.axisBottom(newXScale);
@@ -54,7 +54,7 @@ function xScale(stateData, chosenXAxis) {
     
       var toolTip = d3.tip()
         .attr("class", "tooltip")
-        .offset([80, -60])
+        .offset([75, -65])
         .html(function(d) {
           return (`${d.state}<br>${label} ${d[chosenXAxis]}`);
         });
@@ -77,8 +77,8 @@ function xScale(stateData, chosenXAxis) {
   
   
   
-  
-  var svgWidth = 960;
+  //assigning variable sizes(pixels)
+  var svgWidth = 950;
   var svgHeight = 500;
   
   var margin = {
@@ -216,7 +216,8 @@ function xScale(stateData, chosenXAxis) {
             circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXAxis);
   
             textcirclesGroup = rendertextCircles(textcirclesGroup, xLinearScale, chosenXAxis);
-          // updates tooltips with new info
+          // updates tooltips with new info and assigns them true or false values
+         
             circlesGroup = updateToolTip(chosenXAxis, circles);
             textcirclesGroup = updateToolTip(chosenXAxis, textCircles);
           
